@@ -1,3 +1,10 @@
 from django.shortcuts import render
+from .models import Dispositivo, Medicion, Alerta
 
-# Create your views here.
+def panel(request):
+    dispositivos = Dispositivo.objects.all()
+    alertas = Alerta.objects.order_by('-fecha_hora')[:10]  # últimas 10 alertas
+    return render(request, 'panel.html', {
+        'dispositivos': dispositivos,
+        'alertas': alertas
+    })
