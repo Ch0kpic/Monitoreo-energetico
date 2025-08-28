@@ -7,14 +7,12 @@ class Categoria(models.Model):
     def str(self):
         return self.nombre
 
-
 class Zona(models.Model):
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField(blank=True, null=True)
 
     def str(self):
         return self.nombre
-
 
 class Dispositivo(models.Model):
     nombre = models.CharField(max_length=100)
@@ -48,3 +46,4 @@ class Alerta(models.Model):
 
     def str(self):
         return f"Alerta {self.tipo} - {self.dispositivo.nombre}"
+        return f"{self.nombre} ({self.marca} {self.modelo})"
